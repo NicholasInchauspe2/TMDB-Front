@@ -4,6 +4,9 @@ import Head from "next/head";
 import { Banner } from '@/components/Banner';
 import requests from '@/utils/request';
 import { Movie } from '@/typings';
+import { useState } from 'react';
+
+
 
 interface Props {
   netflixOriginals: Movie[]
@@ -25,9 +28,15 @@ const Home = ({
   horrorMovies,
   romanceMovies,
   documentaries, }: Props) => {
-    console.log(netflixOriginals);
+
+    /* console.log(netflixOriginals); */
+
+
+
+
   return(
 <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+
   <Head>
 
   </Head>
@@ -53,6 +62,11 @@ const Home = ({
 export default Home;
 
 export const getServerSideProps = async () => {
+/*   const [dbLength, setdbLength] = useState(true); 
+  const response = await fetch("http://localhost:3001/api/movie/length", {method: "GET"})
+  const data = await response.json()
+  if(!data.error){ setdbLength(data.length)}
+  console.log("DATA ",data) */
   const [
     netflixOriginals,
     trendingNow,
@@ -72,7 +86,6 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ])
-
   return{
     props: {
       netflixOriginals: netflixOriginals.results,
