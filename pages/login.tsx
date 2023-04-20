@@ -42,12 +42,17 @@ export const Login = ({
     const response = await fetch("http://localhost:3001/api/movie/length", {method: "GET"})
     const data = await response.json()
     if(!data.error){ setdbLength(data.length)}
-  console.log(dbLength)
+  console.log(!dbLength)
     if(!dbLength){
       const response = await fetch("http://localhost:3001/api/movie/add", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(netflixOriginals)});
       const data = await response.json();
       console.log("HI API", data);
     } 
+    if(dbLength > 1){
+      const response = await fetch("http://localhost:3001/api/movie/lastOne", {method: "GET"})
+      const OneDocument = await response.json();
+      console.log(OneDocument)
+    }
     }
 
 
