@@ -39,20 +39,29 @@ export const Login = ({
   const [dbLength, setdbLength] = useState(1); 
 
   const saveMoviesOndb = async () => {
-    const response = await fetch("http://localhost:3001/api/movie/length", {method: "GET"})
-    const data = await response.json()
-    if(!data.error){ setdbLength(data.length)}
-  console.log(!dbLength)
+
+    const response = await fetch("http://localhost:3001/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
+    trendingNow,
+    topRated,
+    actionMovies,
+    comedyMovies,
+    horrorMovies,
+    romanceMovies,
+    documentaries])});
+    const data = await response.json();
+    console.log(data)
+    
+   /*  if(!data.error){ setdbLength(data.length)}
     if(!dbLength){
       const response = await fetch("http://localhost:3001/api/movie/add", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(netflixOriginals)});
       const data = await response.json();
-      console.log("HI API", data);
+      console.log("CUANTAS VECES SE EJECUTA", data, dbLength);
+      setdbLength(dbLength + netflixOriginals.length);
     } 
+    console.log(dbLength)
     if(dbLength > 1){
-      const response = await fetch("http://localhost:3001/api/movie/lastOne", {method: "GET"})
-      const OneDocument = await response.json();
-      console.log(OneDocument)
-    }
+          await fetch("http://localhost:3001/api/movie/lastOne", {method: "GET"})
+    } */
     }
 
 
