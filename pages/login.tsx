@@ -15,7 +15,7 @@ interface Props {
 } 
 
 
-interface movie {
+export interface movie {
   title: string;
 /*   genresList: Array<string>; */
   overview: string;
