@@ -1,6 +1,6 @@
 import { Movie } from "@/typings"
 import requests from "@/utils/request"
-import { useState } from "react"
+
 
 
 interface Props {
@@ -35,8 +35,6 @@ export const Login = ({
   romanceMovies,
   documentaries, }: Props) => {
 
-
-  const [dbLength, setdbLength] = useState(1); 
 
   const saveMoviesOndb = async () => {
 
@@ -73,7 +71,7 @@ export const Login = ({
 
 export default Login
 
-export const getServerSideProps = async () => {
+const getServerSideProps = async () => {
     const [
       netflixOriginals,
       trendingNow,
@@ -96,7 +94,6 @@ export const getServerSideProps = async () => {
 
 
 
-    console.log("CONSOLE LOG",netflixOriginals);
     return{
       props: {
         netflixOriginals: netflixOriginals.results,
