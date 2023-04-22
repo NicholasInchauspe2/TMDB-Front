@@ -6,7 +6,9 @@ import requests from '@/utils/request';
 import { Movie } from '@/typings';
 import { useState } from 'react';
 
-
+interface Props {
+  data: Movie[]
+}
 
 /* interface Props {
   netflixOriginals: Movie[]
@@ -27,9 +29,9 @@ const Home = (/* {
   comedyMovies,
   horrorMovies,
   romanceMovies,
-  documentaries, }: Props */) => {
+  documentaries, }: Props */ {data}: Props) => {
 
-    /* console.log(netflixOriginals); */
+    console.log("ALGO", data);
 
 
 
@@ -61,4 +63,38 @@ const Home = (/* {
 
 export default Home;
 
+
+const getServerSideProps = async () => {
+ const response =  await fetch("http://localhost:3001/api/movie/all", {method: "GET"})
+ console.log("res",response)
+
+/*   const {
+    netflixOriginals,
+    trendingNow,
+    topRated,
+    actionMovies,
+    comedyMovies,
+    horrorMovies,
+    romanceMovies,
+    documentaries,
+ } =  */ const data = await response.json();
+ console.log(data,"ALL MOVIES")
+  
+
+return {
+  props: {data}}
+
+/*   return{
+    props: {
+      netflixOriginals: netflixOriginals,
+      trendingNow: trendingNow,
+      topRated: topRated,
+      actionMovies: actionMovies,
+      comedyMovies: comedyMovies,
+      horrorMovies: horrorMovies,
+      romanceMovies: romanceMovies,
+      documentaries: documentaries,
+    }
+  } */
+}
 
