@@ -5,13 +5,13 @@ import { useState } from "react"
 
 interface Props {
   netflixOriginals: movie[]
-  trendingNow: Movie[]
-  topRated: Movie[]
-  actionMovies: Movie[]
-  comedyMovies: Movie[]
-  horrorMovies: Movie[]
-  romanceMovies: Movie[]
-  documentaries: Movie[]
+  trendingNow: movie[]
+  topRated: movie[]
+  actionMovies: movie[]
+  comedyMovies: movie[]
+  horrorMovies: movie[]
+  romanceMovies: movie[]
+  documentaries: movie[]
 } 
 
 
