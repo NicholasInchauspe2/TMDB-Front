@@ -1,13 +1,13 @@
 import { Header } from '@/components/Header';
 import Head from "next/head";
 import  Banner  from '@/components/Banner';
-import { Props, movie } from '../types';
+import { Props2, movie } from '../types';
 import { Row } from '@/components/Row';
 
 
 
 
-const Home = ({netflixOriginals, trendingNow, topRated, actionMovies, comedyMovies, horrorMovies, romanceMovies, documentaries}: Props) => {
+const Home = ({netflixOriginals, trendingNow, topRated, actionMovies, comedyMovies, horrorMovies, romanceMovies, documentaries}: Props2) => {
 
   return(
 <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
@@ -21,10 +21,13 @@ const Home = ({netflixOriginals, trendingNow, topRated, actionMovies, comedyMovi
   <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16'>
     <Banner netflixOriginals={netflixOriginals}/>
     <section>
-      <Row/>
-      <Row/>
-      <Row/>
-      <Row/>  
+      <Row title="Trending Now" movies={trendingNow}/>
+      <Row title="topRated" movies={topRated}/>
+      <Row title="actionMovies" movies={actionMovies}/>
+      <Row title="comedyMovies" movies={comedyMovies}/>  
+      <Row title="horrorMovies" movies={horrorMovies}/>
+      <Row title="romanceMovies" movies={romanceMovies}/>
+      <Row title="documentaries" movies={documentaries}/>
       </section> 
   </main>
 </div>
