@@ -2,6 +2,7 @@ import { Header } from '@/components/Header';
 import Head from "next/head";
 import  Banner  from '@/components/Banner';
 import { Props, movie } from '../types';
+import { Row } from '@/components/Row';
 
 
 
@@ -17,16 +18,13 @@ const Home = ({netflixOriginals, trendingNow, topRated, actionMovies, comedyMovi
 
      <Header/>
 
-  <main>
+  <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16'>
     <Banner netflixOriginals={netflixOriginals}/>
     <section>
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}      
+      <Row/>
+      <Row/>
+      <Row/>
+      <Row/>  
       </section> 
   </main>
 </div>
