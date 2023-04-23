@@ -77,9 +77,12 @@ export const getServerSideProps = async () => {
     horrorMovies,
     romanceMovies,
     documentaries,
- } =  */ const data : Record<string, movie[]> | null  = await response.json();
- if(!data?.["0"]){
-  const netflixOriginals : Array<movie>  = data?.["0"]
+ } =  */ 
+ let netflixOriginals : Array<movie>;
+ const data : Record<string, movie[]>  = await response.json();
+ if(data?.["0"]){
+   netflixOriginals = data?.["0"]
+   console.log("NETFLIX", netflixOriginals)
  }
 
  

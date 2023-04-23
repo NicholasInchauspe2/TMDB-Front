@@ -35,7 +35,7 @@ export const Login = ({
   romanceMovies,
   documentaries, }: Props) => {
 
-
+    console.log(netflixOriginals, "NETFLIX BABY")
   const saveMoviesOndb = async () => {
 
     const response = await fetch("http://localhost:3001/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
@@ -47,7 +47,7 @@ export const Login = ({
     romanceMovies,
     documentaries])});
     const data = await response.json();
-    console.log(data)
+   /*  console.log(data) */
     
    /*  if(!data.error){ setdbLength(data.length)}
     if(!dbLength){
@@ -71,7 +71,7 @@ export const Login = ({
 
 export default Login
 
-const getServerSideProps = async () => {
+export const getServerSideProps = async () => {
     const [
       netflixOriginals,
       trendingNow,
