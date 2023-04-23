@@ -33,8 +33,28 @@
     documentaries: movie[]
   } 
   
+  export interface Props2 {
+    netflixOriginals: Completemovie[]
+    trendingNow: Completemovie[]
+    topRated: Completemovie[]
+    actionMovies: Completemovie[]
+    comedyMovies: Completemovie[]
+    horrorMovies: Completemovie[]
+    romanceMovies: Completemovie[]
+    documentaries: Completemovie[]
+  } 
   
   export interface movie {
+    title: string;
+    overview: string;
+    vote_average: number;
+    adult: boolean;
+    poster_path: string;
+    backdrop_path: string;
+  }
+
+  export interface Completemovie {
+    _id:string;
     title: string;
     overview: string;
     vote_average: number;
