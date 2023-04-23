@@ -1,29 +1,9 @@
-import { Movie } from "@/typings"
+import { Props, movie } from "@/types"
 import requests from "@/utils/request"
 
 
 
-interface Props {
-  netflixOriginals: movie[]
-  trendingNow: movie[]
-  topRated: movie[]
-  actionMovies: movie[]
-  comedyMovies: movie[]
-  horrorMovies: movie[]
-  romanceMovies: movie[]
-  documentaries: movie[]
-} 
 
-
-export interface movie {
-  title: string;
-/*   genresList: Array<string>; */
-  overview: string;
-  vote_average: number;
-  adult: boolean;
-  poster_path: string;
-  backdrop_path: string;
-}
 
 export const Login = ({
   netflixOriginals,
