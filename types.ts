@@ -1,7 +1,7 @@
-/* export interface Genre {
+export interface Genre {
     id: number
     name: string
-  } */
+  }
   
  /*  export interface Movie {
     title: string
@@ -51,6 +51,8 @@
     adult: boolean;
     poster_path: string;
     backdrop_path: string;
+    media_type?: string;
+    id: number;
   }
 
   export interface Completemovie {
@@ -61,11 +63,13 @@
     adult: boolean;
     poster_path: string;
     backdrop_path: string;
+    media_type?: string
+    id: number
   }
 
   export const baseUrl = 'https://image.tmdb.org/t/p/original/'
   
- /*  export interface Element {
+  export interface videoEle {
     type:
       | 'Bloopers'
       | 'Featurette'
@@ -73,4 +77,4 @@
       | 'Clip'
       | 'Trailer'
       | 'Teaser'
-  } */
+  }
