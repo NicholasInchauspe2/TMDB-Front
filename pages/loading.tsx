@@ -1,6 +1,6 @@
 import { Props, movie } from "@/types"
 import requests from "@/utils/request"
-
+import { useRouter } from 'next/router';
 
 
 
@@ -15,8 +15,8 @@ export const Login = ({
   romanceMovies,
   documentaries, }: Props) => {
 
-    console.log(netflixOriginals, "NETFLIX BABY")
   const saveMoviesOndb = async () => {
+    const router = useRouter();
 
     const response = await fetch("http://localhost:3001/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
     trendingNow,
@@ -27,25 +27,22 @@ export const Login = ({
     romanceMovies,
     documentaries])});
     const data = await response.json();
-   /*  console.log(data) */
+
+    console.log(data.error);
     
-   /*  if(!data.error){ setdbLength(data.length)}
-    if(!dbLength){
-      const response = await fetch("http://localhost:3001/api/movie/add", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(netflixOriginals)});
-      const data = await response.json();
-      console.log("CUANTAS VECES SE EJECUTA", data, dbLength);
-      setdbLength(dbLength + netflixOriginals.length);
-    } 
-    console.log(dbLength)
-    if(dbLength > 1){
-          await fetch("http://localhost:3001/api/movie/lastOne", {method: "GET"})
-    } */
+    if (!data.error) {
+      console.log("entra aca");
+      
+      if (!data.error) {
+        router.replace('/');
+      }
+    }
     }
 
 
   saveMoviesOndb();
   return (
-    <div>Login</div>
+    <div>Loading</div>
   )
 }
 
