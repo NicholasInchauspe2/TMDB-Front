@@ -1,6 +1,7 @@
 import { Props, movie } from "@/types"
 import requests from "@/utils/request"
 import { useRouter } from 'next/router';
+import { useEffect } from "react";
 
 
 
@@ -15,28 +16,48 @@ export const Login = ({
   romanceMovies,
   documentaries, }: Props) => {
 
-  const saveMoviesOndb = async () => {
-    const router = useRouter();
+  useEffect(() => {
+    const saveMoviesOndb = async () => {
+      const response = await fetch("https://tmdb-back-yvih.onrender.com/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
+      trendingNow,
+      topRated,
+      actionMovies,
+      comedyMovies,
+      horrorMovies,
+      romanceMovies,
+      documentaries]), credentials: "include",
+      mode: "cors",});
+      const data = await response.json();
+  
+      
+        if (!data.error && router) {
+          router.replace('/');
+        }
+      
+      }
+  
+  
+    saveMoviesOndb();
+  }, [])
 
-    const response = await fetch("http://localhost:3001/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
+    const router = useRouter();
+  const saveMoviesOndb = async () => {
+    const response = await fetch("https://tmdb-back-yvih.onrender.com/api/movie/length", {method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify([netflixOriginals,
     trendingNow,
     topRated,
     actionMovies,
     comedyMovies,
     horrorMovies,
     romanceMovies,
-    documentaries])});
+    documentaries]), credentials: "include",
+    mode: "cors",});
     const data = await response.json();
 
-    console.log(data.error);
     
-    if (!data.error) {
-      console.log("entra aca");
-      
-      if (!data.error) {
+      if (!data.error && router) {
         router.replace('/');
       }
-    }
+    
     }
 
 
