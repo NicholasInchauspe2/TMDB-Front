@@ -45,15 +45,10 @@ export default Home;
 
 
 export const getServerSideProps = async () => {
-
-
-
   
- const data =  await fetch("http://localhost:3001/api/movie/all", {method: "GET"}).then((res) => res.json())
+ const data =  await fetch("https://tmdb-back-yvih.onrender.com/api/movie/all", {method: "GET", credentials: "include",
+ mode: "cors"}).then((res) => res.json())
 if(data?.["0"] && data?.["7"]){
- if(data === undefined){
-  
- }
 
   let netflixOriginals : Array<movie>;
   let trendingNow: Array<movie>;

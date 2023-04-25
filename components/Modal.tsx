@@ -28,7 +28,6 @@ export function Modal() {
 
           if(data?.videos){
             const index = data.videos.results.findIndex((element: videoEle) =>  element.type == "Trailer");
-            console.log(data, index)
             setTrailer(data.videos?.results[index]?.key)
           }
           if(data?.genres){
