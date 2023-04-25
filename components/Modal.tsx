@@ -1,3 +1,4 @@
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 import { modalState, movieState } from "@/atoms/modalAtom";
 import { Completemovie, Genre, videoEle } from "@/types";
 import { ThumbUpIcon } from "@heroicons/react/solid";
@@ -24,7 +25,7 @@ export function Modal() {
         if(!movie) return 
 
         async function fetchMovie(){
-            const data = await fetch(`http://api.themoviedb.org/3/${movie?.media_type === "tv" ? "tv" : "movie"}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&append_to_response=videos`).then((res) => res.json().catch(err => console.log(err)));
+            const data = await fetch(`http://api.themoviedb.org/3/${movie?.media_type === "tv" ? "tv" : "movie"}/${movie?.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`).then((res) => res.json().catch(err => console.log(err)));
 
           if(data?.videos){
             const index = data.videos.results.findIndex((element: videoEle) =>  element.type == "Trailer");
